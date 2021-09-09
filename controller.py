@@ -27,6 +27,6 @@ def blog():
 
 
 @app.route("/blogs/<int:book_id>")
-def blogs(book_id):
+def blog_ids(book_id):
     blogs = Blog.query.get(book_id)
     return render_template('blog2.html', blogs=blogs, a=active)

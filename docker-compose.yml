@@ -3,14 +3,10 @@ version: '3.1'
 services:
 
   db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
+    image: postgres
     restart: always
-    ports:
-      - 3306:3306
-    volumes:
-      - ./data:/var/lib/mysql
     env_file: .env
+
 
   app:
     container_name: app
@@ -18,7 +14,7 @@ services:
     volumes:
       - .:/app:rw
     ports:
-      - 5000:5000
+      - 5432:5432
     command: "flask run -h 0.0.0.0 -p 5000"
     env_file: .env
     restart: always
