@@ -24,3 +24,9 @@ def blog():
             return redirect(url_for("blogs"))
 
     return render_template('blog.html', form=form, a=active)
+
+
+@app.route("/blogs/<int:book_id>")
+def blogs(book_id):
+    blogs = Blog.query.get(book_id)
+    return render_template('blog2.html', blogs=blogs, a=active)

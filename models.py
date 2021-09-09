@@ -16,6 +16,20 @@ class Blog(db.Model):
         db.session.add(self)
         db.session.commit()
 
+class Comment(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    content = db.Column(db.String(255))
+    blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)
+    def __repr__(self):
+        return f'{self.id}, {self.content}'
+
+    def __init__(self, content):
+        self.content = content
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
 
 
 
