@@ -20,6 +20,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     content = db.Column(db.String(255))
     blog_id = db.Column(db.Integer, db.ForeignKey('blog.id'), nullable=False)
+    # addresses = db.relationship('Address', backref='person', lazy=True)
+
     def __repr__(self):
         return f'{self.id}, {self.content}'
 

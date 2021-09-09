@@ -28,12 +28,12 @@
                 {{form.csrf_token}}
         <p class="h4 text-uppercase text-center mt-5">Blog yarat</p>
         <div class="wrap-input100 validate-input">
-					{{render_field(form.title, placeholder='Blog title')}}
+					{{render_field(form.content, placeholder='Blog Comment')}}
                     <span class="focus-input100"></span>
 				</div>
 				
         <div class="wrap-input100">
-          {{render_field(form.description)}}
+          {{render_field(form.blog_id)}}
           <span class="focus-input100"></span>
         </div>
 
