@@ -2,7 +2,7 @@ import os
 from flask import Flask
 
 
-DB_URL = os.getenv("DB_URL", 'mysql+pymysql://root:123456@127.0.0.1:3306/myBlog')
+DB_URL = os.getenv("DB_URL", 'postgresql://taleh@postgres:5432/myBlog')
 SECRET_KEY = os.getenv("SECRET_KEY", '42a185930e20453aa62b88e16ef4cf48')
 
 app = Flask(__name__)
