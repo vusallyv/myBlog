@@ -2,16 +2,6 @@ version: '3.1'
 
 services:
 
-  postgres:
-    container_name:  postgres
-    image:           postgres:13
-    restart: "on-failure"
-    ports:
-      - 5432:5432 # Bind host port 5432 to PostgreSQL port 5432
-    volumes:
-      - ./postgredb:/var/lib/postgresql/data
-    env_file: ./.env
-
   app:
     container_name: app
     build: .
@@ -23,7 +13,17 @@ services:
     env_file: .env
     restart: always
     depends_on:
-      - "postgres"
+      - "db"
+
+  db:
+    container_name:  postgres
+    image:           postgres:9
+    restart: "on-failure"
+    ports:
+      - 5432:5432 # Bind host port 5432 to PostgreSQL port 5432
+    volumes:
+      - ./postgredb:/var/lib/postgresql/data
+    env_file: ./.env
 
   adminer:
     image: adminer
